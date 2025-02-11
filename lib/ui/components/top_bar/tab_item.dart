@@ -18,12 +18,16 @@ class TabItem extends StatelessWidget {
         children: [
           Container(
             margin: EdgeInsetsDirectional.only(start: 5),
-            padding: EdgeInsets.all(3),
+            padding: EdgeInsets.all(0),
             child: Center(
               child: icon
             ),
           ),
           Text(
+            style: TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold
+            ),
             title,
             overflow: TextOverflow.ellipsis,
           ),

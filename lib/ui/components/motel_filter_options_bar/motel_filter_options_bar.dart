@@ -53,7 +53,6 @@ class MotelFilterOptionsBar extends StatelessWidget {
             border: Border(
               bottom: BorderSide(
                 color: AppColors.greyDivider,
-                // Border color
                 width: 2, // Border width
               ),
             ),

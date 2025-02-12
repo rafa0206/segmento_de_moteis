@@ -36,7 +36,6 @@ class _MotelCardState extends State<MotelCard> {
                   suite: widget.motel.suites[index],
                   scrollController: widget.scrollController,
                 );
-                // return Text('suite teste');
               },
             ),
           ],

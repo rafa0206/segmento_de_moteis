@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:segmento_de_moteis/utils/constants/app_colors.dart';
 

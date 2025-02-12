@@ -4,6 +4,7 @@ import 'package:segmento_de_moteis/controller/motel_controller.dart';
 import 'package:segmento_de_moteis/ui/components/motel_card.dart';
 import 'package:segmento_de_moteis/ui/components/motel_filter_options_bar/motel_filter_options_bar.dart';
 import 'package:segmento_de_moteis/ui/components/top_motel_discounts/top_motel_discounts.dart';
+import 'package:segmento_de_moteis/utils/constants/app_colors.dart';
 import 'package:segmento_de_moteis/utils/messages/messages.dart';
 
 class GoNowPage extends StatefulWidget {
@@ -30,60 +31,64 @@ class _GoNowPageState extends State<GoNowPage> {
 
   final scrollController = ScrollController();
   late Size mediaSize;
+  late bool loading = true;
 
   @override
   Widget build(BuildContext context) {
     mediaSize = MediaQuery.of(context).size;
-    return CustomScrollView(
-      controller: scrollController,
-      slivers: [
-        TopMotelDiscounts(mediaSize: mediaSize),
-        MotelFilterOptionsBar(),
-        SliverToBoxAdapter(
-          child: Consumer<MotelController>(
-              builder: (BuildContext context, MotelController motelController, Widget? widget) {
-            return FutureBuilder(
-              future: motelController.futureMotels,
-              builder: (context, snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.none:
-                    return Center(
-                      child: Message.alertMessageNoMotels('Nenhum motel encontrado'),
-                    );
-                  case ConnectionState.waiting:
-                    return Center(
-                      child: Message.loading(context),
-                    );
-                  default:
-                    if (snapshot.hasError) {
+    return RefreshIndicator(
+      color: AppColors.red,
+      backgroundColor: AppColors.white,
+      onRefresh: () async {
+        _reload();
+      },
+      child: CustomScrollView(
+        controller: scrollController,
+        slivers: [
+          TopMotelDiscounts(mediaSize: mediaSize),
+          MotelFilterOptionsBar(),
+          SliverToBoxAdapter(
+            child: Consumer<MotelController>(
+                builder: (BuildContext context, MotelController motelController, Widget? widget) {
+              return FutureBuilder(
+                future: motelController.futureMotels,
+                builder: (context, snapshot) {
+                  switch (snapshot.connectionState) {
+                    case ConnectionState.none:
                       return Center(
                         child: Message.alertMessageNoMotels('Nenhum motel encontrado'),
                       );
-                    } else if (!snapshot.hasData) {
-                      return Message.alertMessageNoMotels('Nenhum motel encontrado');
-                    } else if (snapshot.data!.isEmpty) {
-                      return Center(child: Message.alertMessageNoMotels('Nenhum motel encontrado'));
-                    } else {
-                      return RefreshIndicator(
-                        onRefresh: () async {
-                          _reload();
-                        },
-                        child: ListView.builder(
-                          controller: scrollController,
-                          shrinkWrap: true,
-                          itemCount: snapshot.data?.length,
-                          itemBuilder: (context, index) {
-                            return MotelCard(motel: snapshot.data![index], scrollController: scrollController);
-                          },
-                        ),
+                    case ConnectionState.waiting:
+                      return Center(
+                        child: Message.loading(context),
                       );
-                    }
-                }
-              },
-            );
-          }),
-        ),
-      ],
+                    default:
+                      if (snapshot.hasError) {
+                        return Center(
+                          child: Message.alertMessageNoMotels('Nenhum motel encontrado'),
+                        );
+                      } else if (!snapshot.hasData) {
+                        return Message.alertMessageNoMotels('Nenhum motel encontrado');
+                      } else if (snapshot.data!.isEmpty) {
+                        return Center(child: Message.alertMessageNoMotels('Nenhum motel encontrado'));
+                      } else {
+                        loading = false;
+                        return ListView.builder(
+                            controller: scrollController,
+                            shrinkWrap: true,
+                            itemCount: snapshot.data?.length,
+                            itemBuilder: (context, index) {
+                              return MotelCard(motel: snapshot.data![index], scrollController: scrollController);
+                            },
+                          );
+                      }
+                  }
+                },
+              );
+            }),
+          ),
+        ],
+      ),
     );
   }
 }

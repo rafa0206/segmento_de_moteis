@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:segmento_de_moteis/utils/messages/messages.dart';
 
 class GoOtherDayPage extends StatelessWidget {
 
@@ -9,7 +10,7 @@ class GoOtherDayPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('teste'),
+      child: Message.alertScreenNotComplet('Página em construção(não faz parte do teste)'),
     );
   }
 }

@@ -137,11 +137,12 @@ class SuiteItens extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ListView.builder(
+                scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemCount: suite.categoryItens.length < 4 ? suite.categoryItens.length : 4,
                 itemBuilder: (context, index){
                   return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 8),
+                    padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 5),
                     child: Container(
                       width: 46,
                       height: 46,
@@ -161,7 +162,7 @@ class SuiteItens extends StatelessWidget {
                 },
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 8),
+                padding: const EdgeInsets.symmetric(vertical: 6.0, horizontal: 5),
                 child: Container(
                   width: 60,
                   height: 46,

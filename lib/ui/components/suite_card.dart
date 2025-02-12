@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:segmento_de_moteis/domain/entities/suite.dart';
+import 'package:segmento_de_moteis/ui/components/suite/suite_itens.dart';
 import 'package:segmento_de_moteis/ui/components/suite/suite_period_card.dart';
 import 'package:segmento_de_moteis/ui/components/suite/suite_title.dart';
 
@@ -25,6 +26,7 @@ class _SuiteCardState extends State<SuiteCard> {
       child: Column(
         children: [
           SuiteTitle(suite: widget.suite),
+          SuiteItens(suite: widget.suite),
           ListView.builder(
             controller: widget.scrollController,
             shrinkWrap: true,

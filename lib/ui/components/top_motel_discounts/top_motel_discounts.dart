@@ -53,7 +53,7 @@ class _TopMotelDiscountsState extends State<TopMotelDiscounts> {
                           Expanded(
                             child: Container(
                               decoration: BoxDecoration(
-                                color: AppColors.greyDotColor,
+                                color: AppColors.greyItemBackground,
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(8),
                                 ),

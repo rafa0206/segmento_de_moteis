@@ -43,7 +43,6 @@ class SuitePeriodCard extends StatelessWidget {
                           padding: const EdgeInsets.only(right: 8.0),
                           child: Text(
                             suitePeriod.formattedTime,
-                            // '3 horas',
                             style: TextStyle(fontSize: 22),
                           ),
                         ),
@@ -63,7 +62,6 @@ class SuitePeriodCard extends StatelessWidget {
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 6.0),
                                   child: Text(
-                                    // '30% off',
                                     '${percentageDiscount.toStringAsFixed(0)} % off',
                                     style: TextStyle(color: AppColors.green, fontSize: 12),
                                   ),

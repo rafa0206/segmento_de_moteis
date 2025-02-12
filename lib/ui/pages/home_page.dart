@@ -26,6 +26,22 @@ class _HomePageState extends State<HomePage> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
+        floatingActionButton: Align(
+          alignment: Alignment.bottomCenter,
+          child: FloatingActionButton.extended(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(25)),
+            ),
+            backgroundColor: AppColors.white,
+              label: Text('mapa', style: TextStyle(
+                color: AppColors.red,
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),),
+              icon: Icon(Icons.map_outlined, color: AppColors.red, size: 20,),
+              onPressed: (){}
+          ),
+        ),
         resizeToAvoidBottomInset: true,
         extendBodyBehindAppBar: false,
         extendBody: false,

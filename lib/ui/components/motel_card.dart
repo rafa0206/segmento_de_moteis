@@ -20,7 +20,6 @@ class _MotelCardState extends State<MotelCard> {
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.lightGreyBackground,
-      // child: Text('suite teste'),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 24),
         child: Column(

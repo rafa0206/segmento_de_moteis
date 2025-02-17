@@ -133,7 +133,6 @@ void main() {
                 return MaterialApp(
                   key: providerKey,
                   home: HomePage(motelApi: mockMotelApi),
-                  // home: HomePage(motelApi: motelApi),
                 );
               }
           ),

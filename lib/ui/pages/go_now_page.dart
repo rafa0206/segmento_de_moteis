@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:segmento_de_moteis/controller/motel_controller.dart';
+import 'package:segmento_de_moteis/data/api/motel_api.dart';
 import 'package:segmento_de_moteis/ui/components/motel_card.dart';
 import 'package:segmento_de_moteis/ui/components/motel_filter_options_bar/motel_filter_options_bar.dart';
 import 'package:segmento_de_moteis/ui/components/top_motel_discounts/top_motel_discounts.dart';
@@ -10,7 +11,9 @@ import 'package:segmento_de_moteis/utils/messages/messages.dart';
 class GoNowPage extends StatefulWidget {
   static const String id = 'go_now_page';
 
-  const GoNowPage({super.key});
+  const GoNowPage({required this.motelApi, super.key});
+
+  final MotelApi motelApi;
 
   @override
   State<GoNowPage> createState() => _GoNowPageState();
@@ -26,7 +29,7 @@ class _GoNowPageState extends State<GoNowPage> {
   }
 
   void _reload() async {
-    MotelController.of(context).getMotels();
+    MotelController.of(context).getMotels(motelApi: widget.motelApi);
   }
 
   final scrollController = ScrollController();

@@ -1,6 +1,9 @@
 import 'dart:convert';
+import 'package:mockito/annotations.dart';
 import 'package:segmento_de_moteis/domain/entities/motel.dart';
 import 'package:http/http.dart' as http;
+
+@GenerateMocks([MotelApi])
 
 class MotelApi {
 

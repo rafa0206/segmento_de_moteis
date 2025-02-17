@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:segmento_de_moteis/data/api/motel_api.dart';
 import 'package:segmento_de_moteis/ui/components/top_bar/top_bar.dart';
 import 'package:segmento_de_moteis/ui/pages/go_now_page.dart';
 import 'package:segmento_de_moteis/ui/pages/go_other_day_page.dart';
@@ -8,7 +9,9 @@ class HomePage extends StatefulWidget {
 
   static const String id = 'home_page';
 
-  const HomePage({super.key});
+  const HomePage({required this.motelApi, super.key});
+
+  final MotelApi motelApi;
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -67,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                       TabBarView(
                         physics: NeverScrollableScrollPhysics(),
                         children: [
-                          GoNowPage(),
+                          GoNowPage(motelApi: widget.motelApi,),
                           GoOtherDayPage(),
                         ],
                       ),

@@ -4,11 +4,9 @@ import 'package:segmento_de_moteis/domain/repositories/api_repositories/motel_ap
 
 class MotelApiRepositoryImpl implements MotelApiRepository {
 
-  final MotelApi _motelApi = MotelApi();
-
   @override
-  Future<List<Motel>?> getMotels() {
-    return _motelApi.getMotels();
+  Future<List<Motel>?>? getMotels(MotelApi? motelApi) {
+    return motelApi?.getMotels();
   }
 
 }

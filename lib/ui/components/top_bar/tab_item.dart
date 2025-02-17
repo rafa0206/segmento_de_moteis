@@ -17,19 +17,21 @@ class TabItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            margin: EdgeInsetsDirectional.only(start: 5),
+            margin: EdgeInsetsDirectional.only(start: 0),
             padding: EdgeInsets.all(0),
             child: Center(
               child: icon
             ),
           ),
-          Text(
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold
+          Expanded(
+            child: Text(
+              style: TextStyle(
+                fontSize: 15,
+                fontWeight: FontWeight.bold
+              ),
+              title,
+              overflow: TextOverflow.ellipsis,
             ),
-            title,
-            overflow: TextOverflow.ellipsis,
           ),
         ]
       ),

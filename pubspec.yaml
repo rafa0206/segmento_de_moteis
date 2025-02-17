@@ -20,13 +20,16 @@ dependencies:
   expandable_page_view: ^1.0.17
   intl: ^0.20.2
   mockito: ^5.4.5
-  mocktail: ^1.0.4
+#  mocktail: ^1.0.4
 
 dev_dependencies:
+  integration_test:
+    sdk: flutter
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^5.0.0
+  build_runner: ^2.4.15
 
 flutter:
 

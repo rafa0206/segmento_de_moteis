@@ -9,7 +9,6 @@ class LocationButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.red,
-      width: 88,
       height: 40,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

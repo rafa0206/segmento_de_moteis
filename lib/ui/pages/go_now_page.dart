@@ -87,12 +87,8 @@ class _GoNowPageState extends State<GoNowPage> {
                               },
                             ),
                           ),
-
                           BottomMotelDiscounts(mediaSize: mediaSize, scrollController: scrollController,),
-
-
                         ],
-
                       );
                     }
                 }

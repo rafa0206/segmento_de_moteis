@@ -8,6 +8,8 @@ class MotelController extends ChangeNotifier {
 
   Future<List<Motel>?>? futureMotels;
 
+  Future<List<Motel>?>? futureMotelsWithDiscount;
+
   bool loading = false;
   final MotelApiRepositoryImpl _motelApiRepositoryImpl = MotelApiRepositoryImpl();
 
@@ -19,6 +21,22 @@ class MotelController extends ChangeNotifier {
     loading = true;
     futureMotels = _motelApiRepositoryImpl.getMotels(motelApi);
     loading = false;
+    notifyListeners();
+  }
+
+  List<Motel>? filterMotelsWithDiscount(List<Motel> motels) {
+    return motels.where((motel) {
+      return motel.suites.any((suite){
+        return suite.periods.any((period) {
+          return period.discount != null;
+        });
+      });
+    }).toList();
+  }
+
+  Future<void> setMotelsWithDiscount() async {
+    futureMotelsWithDiscount =
+         futureMotels?.then((motels) => filterMotelsWithDiscount(motels!));
     notifyListeners();
   }
 
